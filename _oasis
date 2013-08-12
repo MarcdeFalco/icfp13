@@ -1,0 +1,16 @@
+OASISFormat: 0.3
+Name:        ICFP13
+Version:     13.42
+Synopsis:    ICFP13
+Authors:     MPSI2
+License:     LGPL-2.1 with OCaml linking exception
+Plugins:     META (0.3)
+
+Executable icfp13
+  Path:       src
+  BuildTools: ocamlbuild
+  BuildDepends: unix, yojson, curl, uint
+  CompiledObject: native
+  MainIs:     main.ml
+ 
+  

@@ -1,0 +1,5 @@
+#!/bin/sh
+if oasis setup
+then
+    ocaml setup.ml -configure --disable-debug --disable-profile --prefix .
+fi

@@ -1,0 +1,5 @@
+#!/bin/sh
+if ocaml setup.ml -build
+then
+	ocaml setup.ml -install
+fi
