@@ -160,10 +160,14 @@ and do_fold size options cont =
                             cont (Fold(e1,e0,"b","c",e2));
                             cont (Fold(e0,e1,"b","c",e2)))))
 
+let count = ref 0 
+
 let program_found tfold id ops tests verbose e =
     let p = if tfold
             then Lambda.Entry("a",Lambda.Fold(Lambda.Var "a",Lambda.Zero,"b","c",e))
             else Lambda.Entry("a",e) in
+
+    incr count;
 
     if verbose then begin
         Printf.printf "%s\n" (Lambda.to_string p);

@@ -26,6 +26,31 @@ Marc's i5 (quad core 3.2ghz) with 16gb of ram.
 * **150** the number of points burned stupidly because the final solver would
   have scored them
 
+### Statistics of the generator
+All time is measured on one core of an i5 @ 3.2ghz using 16gb of ram.
+
+Those stats only take into account the generation and not the validation of the
+programs.
+#### Programs using and shl1
+only one binary and one unary is easy.
+* size 14: 112081 programs generated in 80ms using 5mb
+* size 18: 7986474 programs generated in 7s using 6mb
+* size 20: 71374814 programs generated in 1m using 6mb
+#### Programs using and or xor
+starting from now I don't give the memory usage, it's always 6mb or less.
+
+* size 14: 2466264 programs generated in 1.8s
+* size 16: 39119265 programs generated in 29s
+#### Programs using not shl1 shr1 shr4
+
+* size 12: 1101180 in 1.5s
+* size 13: 4174887 in 4.8s
+
+#### Programs using if0 and shl1
+
+* size 13: 2518544 in 0.42s
+* size 16: 240945855 in 27s
+
 ### Our method
 #### First : brute-force with memory
 The first method we did implement was a classic brute-force :

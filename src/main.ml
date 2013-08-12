@@ -97,8 +97,8 @@ let follow n heavyrandom =
 exception Stop
 let _ = 
 let uniqueid = (Unix.getpid ()) in
-Random.init uniqueid;
-Printf.printf "UID:%d\n" uniqueid;
+Random.init uniqueid; Printf.printf "UID:%d\n" uniqueid;
+
    (* Printexc.record_backtrace false;*)
 
 try begin
@@ -180,7 +180,9 @@ try begin
         solve8 id size operators
     | "gen" -> Generator.gen "" 
         (int_of_string Sys.argv.(2))
-        ["if0";"shl1";"and";"not"] (ref []) true true true;
+        (Array.to_list (Array.sub Sys.argv 2 (Array.length Sys.argv - 2)))
+        (ref []) true false true;
+        Printf.printf "%d generated.\n" !Generator.count
     | _ -> Printf.fprintf stderr "Error: Unknown action."
 end with Yojson.Json_error s -> 
         Printexc.print_backtrace stderr;
@@ -188,16 +190,5 @@ end with Yojson.Json_error s ->
     | Failure f -> 
         Printexc.print_backtrace stderr;
         Printf.fprintf stderr "%s\n" f
-    | e -> 
-        Printf.printf "%s\n" (Printexc.to_string e);
+    | e -> Printf.printf "%s\n" (Printexc.to_string e);
         Printexc.print_backtrace stderr
-(*
- * Du code rattrapge que je garde au cas ou
-        Yojson.Json_error s -> 
-            Printexc.print_backtrace stderr;
-            Printf.fprintf stderr "JSON %s\n" s
-        | Failure f -> 
-            Printexc.print_backtrace stderr;
-            Printf.fprintf stderr "%s\n" f
-        | _ -> Printexc.print_backtrace stderr
-*)
