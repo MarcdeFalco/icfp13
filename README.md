@@ -102,6 +102,7 @@ We adapt the previous method with some twists :
 * to be ablet o run in parallel many generations without searching in the same
   order, the branching between searching for a leaf, a unary, a binary, ... is 
   randomized.
+
 #### Some note about bonus problems
 For bonus problems who are always starting by a if0, we use the following
 algorithms:
