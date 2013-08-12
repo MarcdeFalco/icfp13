@@ -81,7 +81,7 @@ call a continuation for building the right tree:
     let rec gen size cont =
         if size = 0
         then cont Leaf
-        else gen ((size-1)/2)
+        else gen (size-2)
             (fun tree_left ->
                 gen (size-1-size_of tree_left)
                     (fun tree_right ->
@@ -89,6 +89,9 @@ call a continuation for building the right tree:
 
 Then the first continuation given to the generating function is the one testing
 examples. This way, as soon as a tree is built it is tested.
+
+We could generate trees up to commutativity by replacing the call *gen
+(size-2)* by *gen ((size-1)/2)*.
 
 ##### Going into full-fledged program
 We adapt the previous method with some twists :
